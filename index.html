@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iniciar sesión — Sistema Estafeta</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="page-login">
+    <header class="login-hero">
+      <img class="login-hero__logo" src="img/logo-wordmark.svg" alt="estafeta" width="220" height="40" />
+      <h1>SISTEMA ESTAFETA</h1>
+      <p>Sistema de Registro de Observaciones de Entregas Fallidas (prototipo estático).</p>
+    </header>
+
+    <div class="login-card-wrap">
+      <section class="card login-card" aria-labelledby="login-title">
+        <h2 id="login-title" class="card__title">Acceso al sistema</h2>
+        <p class="card__subtitle">Ingrese sus credenciales para continuar.</p>
+        <form class="form-grid" action="#" method="get">
+          <div class="form-field">
+            <label for="usuario">Usuario</label>
+            <input id="usuario" name="usuario" type="text" autocomplete="username" />
+          </div>
+          <div class="form-field">
+            <label for="password">Contraseña</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" />
+          </div>
+          <button class="btn btn--block" type="submit">Iniciar sesión</button>
+        </form>
+        <a class="login-forgot" href="#">¿Olvidaste tu contraseña?</a>
+      </section>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Secciones del prototipo">
+      <a href="registro.html">Registro</a>
+      <a href="historial.html">Historial</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="vision-mision.html">Visión y misión</a>
+      <a href="tiendita.html">Tiendita</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </body>
+</html>

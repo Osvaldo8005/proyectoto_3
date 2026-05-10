@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto — Sistema Estafeta</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="page-contact">
+    <div class="contact-bg" aria-hidden="true">
+      <img class="contact-bg__a" src="img/vehiculo-21.svg" alt="" width="400" height="220" />
+      <img class="contact-bg__b" src="img/personal-19.svg" alt="" width="360" height="280" />
+    </div>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-logo" href="index.html">
+          <img src="img/logo-wordmark.svg" alt="estafeta" width="180" height="32" />
+          <span>Observaciones de entregas fallidas</span>
+        </a>
+        <nav class="site-nav" aria-label="Principal">
+          <a href="index.html">Login</a>
+          <a href="registro.html">Registro</a>
+          <a href="historial.html">Historial</a>
+          <a href="quienes-somos.html">Quiénes somos</a>
+          <a href="vision-mision.html">Visión y misión</a>
+          <a href="tiendita.html">Tiendita</a>
+          <a href="contacto.html" aria-current="page">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <div class="contact-layout">
+        <section class="card prose" aria-labelledby="con-intro">
+          <h1 id="con-intro" class="card__title">Contacto</h1>
+          <p class="card__subtitle">Canal de demostración para dudas del prototipo académico.</p>
+          <p>
+            Este formulario no envía información: sirve únicamente para validar el diseño del Producto Integrador. El fondo incorpora motivos de flota y personal como referencia visual.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="con-form-title">
+          <h2 id="con-form-title" class="card__title">Escríbenos</h2>
+          <form class="form-grid" action="#" method="get">
+            <div class="form-field">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" type="text" autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label for="correo">Correo</label>
+              <input id="correo" name="correo" type="email" autocomplete="email" />
+            </div>
+            <div class="form-field">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Escriba su mensaje…"></textarea>
+            </div>
+            <button class="btn btn--block" type="submit">Enviar</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">Prototipo académico — Estafeta — sin funcionalidad real.</footer>
+  </body>
+</html>

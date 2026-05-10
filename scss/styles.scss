@@ -1,0 +1,700 @@
+// =============================================================================
+// Sistema de Registro de Observaciones de Entregas Fallidas — Estafeta
+// Hoja maestra SCSS: variables, mixins, base, layout y componentes.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 1) Variables de marca y tipografía
+//    Colores institucionales y tokens reutilizables en todo el prototipo.
+// -----------------------------------------------------------------------------
+$color-primary: #e60014;
+$color-gray-corporate: #333333;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-bg-page: #f4f4f4;
+$color-border: #d9d9d9;
+$color-muted: #666666;
+$font-stack: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+$radius-sm: 6px;
+$radius-md: 10px;
+$shadow-card: 0 8px 24px rgba(0, 0, 0, 0.08);
+$max-content: 1100px;
+$bp-tablet: 768px;
+
+// -----------------------------------------------------------------------------
+// 2) Mixins reutilizables
+//    Flex centrado, botón primario, contenedor y media queries.
+// -----------------------------------------------------------------------------
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin container {
+  width: min(100% - 2rem, #{$max-content});
+  margin-inline: auto;
+}
+
+@mixin button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: $color-white;
+  background: $color-primary;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: default;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+@mixin button-secondary {
+  @include button-primary;
+  background: $color-white;
+  color: $color-gray-corporate;
+  border: 2px solid $color-border;
+}
+
+@mixin focus-ring {
+  outline: 3px solid rgba($color-primary, 0.35);
+  outline-offset: 2px;
+}
+
+@mixin tablet-up {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 3) Reset ligero y elementos base
+//    Box-sizing, tipografía corporativa y enlaces accesibles.
+// -----------------------------------------------------------------------------
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  color: $color-gray-corporate;
+  background: $color-bg-page;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+// Cuerpo en columnas para anclar el pie al fondo en páginas internas.
+body:not(.page-login) {
+  display: flex;
+  flex-direction: column;
+
+  .site-main {
+    flex: 1;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 4) Layout del sitio: cabecera, pie y rejilla principal
+//    Estructura común a todas las páginas del prototipo.
+// -----------------------------------------------------------------------------
+.site-header {
+  background: $color-white;
+  border-bottom: 4px solid $color-primary;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-header__inner {
+  @include container;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+}
+
+.site-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  img {
+    height: 36px;
+    width: auto;
+  }
+
+  span {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-muted;
+    font-weight: 600;
+  }
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+
+  a {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: $color-gray-corporate;
+    text-decoration: none;
+    padding: 0.35rem 0;
+
+    &:hover,
+    &[aria-current="page"] {
+      color: $color-primary;
+      text-decoration: underline;
+    }
+  }
+}
+
+.site-main {
+  @include container;
+  padding: 1.5rem 0 3rem;
+}
+
+.site-footer {
+  background: $color-gray-corporate;
+  color: $color-white;
+  padding: 1.25rem 1rem;
+  margin-top: auto;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+// -----------------------------------------------------------------------------
+// 5) Tarjetas y paneles (wireframes de formularios y tablas)
+//    Superficie blanca con sombra para simular pantallas del sistema.
+// -----------------------------------------------------------------------------
+.card {
+  background: $color-white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+
+  @include tablet-up {
+    padding: 1.75rem 2rem;
+  }
+}
+
+.card__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.35rem;
+  color: $color-gray-corporate;
+}
+
+.card__subtitle {
+  margin: 0 0 1.25rem;
+  color: $color-muted;
+  font-size: 0.95rem;
+}
+
+// -----------------------------------------------------------------------------
+// 6) Formularios: campos, etiquetas, acciones en fila responsive
+//    Estilos compartidos entre login, registro y contacto.
+// -----------------------------------------------------------------------------
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  @include tablet-up {
+    &--inline {
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 0.75rem;
+
+      .form-field {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.form-field label,
+.form-field legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+fieldset.form-field {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+fieldset.form-field legend {
+  padding: 0;
+  margin-bottom: 0.35rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  font-family: inherit;
+  font-size: 1rem;
+  color: $color-gray-corporate;
+  background: $color-white;
+
+  &:focus {
+    border-color: $color-primary;
+    @include focus-ring;
+  }
+}
+
+.form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btn {
+  @include button-primary;
+}
+
+.btn--secondary {
+  @include button-secondary;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+// -----------------------------------------------------------------------------
+// 7) Tabla de historial (scroll horizontal en móvil)
+// -----------------------------------------------------------------------------
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+  font-size: 0.95rem;
+
+  th,
+  td {
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid $color-border;
+  }
+
+  th {
+    background: rgba($color-primary, 0.08);
+    font-weight: 700;
+    color: $color-gray-corporate;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 8) Filtros y barra de herramientas del historial
+// -----------------------------------------------------------------------------
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.toolbar__grow {
+  flex: 1 1 200px;
+}
+
+// -----------------------------------------------------------------------------
+// 9) Página de login: layout centrado y barra inferior de accesos
+//    index.html — enfoque en credenciales y navegación secundaria abajo.
+// -----------------------------------------------------------------------------
+.page-login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(160deg, $color-white 0%, $color-bg-page 45%, #ececec 100%);
+}
+
+.login-hero {
+  @include flex-center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+
+  .login-hero__logo {
+    height: 48px;
+    width: auto;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    letter-spacing: 0.12em;
+    color: $color-gray-corporate;
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+    color: $color-muted;
+    max-width: 28rem;
+    font-size: 0.95rem;
+  }
+}
+
+.login-card-wrap {
+  flex: 1;
+  @include flex-center;
+  padding: 0 1rem 5.5rem;
+}
+
+.login-card {
+  width: min(100%, 420px);
+}
+
+.login-forgot {
+  display: block;
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-gray-corporate;
+  border-top: 3px solid $color-primary;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1rem;
+  z-index: 30;
+
+  a {
+    color: $color-white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.35rem 0.5rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 10) Páginas institucionales: rejilla de contenido + medios
+//     quienes-somos, visión-misión: texto e ilustraciones alineadas.
+// -----------------------------------------------------------------------------
+.split-grid {
+  display: grid;
+  gap: 1.5rem;
+
+  @include tablet-up {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.media-block {
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 1px solid $color-border;
+  background: $color-white;
+
+  figcaption {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.85rem;
+    color: $color-muted;
+    background: $color-bg-page;
+  }
+}
+
+.prose {
+  h2 {
+    margin-top: 0;
+    color: $color-gray-corporate;
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin: 0 0 1rem;
+  }
+}
+
+.vision-mission {
+  display: grid;
+  gap: 1.25rem;
+
+  @include tablet-up {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.vm-block {
+  background: $color-white;
+  border-left: 5px solid $color-primary;
+  padding: 1.25rem 1.5rem;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-card;
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $color-primary;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 11) Tiendita: carrusel solo CSS + catálogo en rejilla
+//     Animación por opacidad sin JavaScript.
+// -----------------------------------------------------------------------------
+.css-slider {
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 1px solid $color-border;
+  aspect-ratio: 16 / 7;
+  max-height: 320px;
+  background: $color-black;
+}
+
+.css-slider__track {
+  position: absolute;
+  inset: 0;
+}
+
+.css-slider__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: slideFade 9s infinite;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 3s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 6s;
+  }
+}
+
+@keyframes slideFade {
+  0% {
+    opacity: 0;
+  }
+
+  4% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  36% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.catalog-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.catalog-card {
+  background: $color-white;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 100%;
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: $color-gray-corporate;
+  }
+
+  p {
+    margin: 0;
+    flex: 1;
+    font-size: 0.88rem;
+    color: $color-muted;
+  }
+
+  .btn {
+    align-self: flex-start;
+    font-size: 0.85rem;
+    padding: 0.45rem 0.9rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 12) Contacto: formulario sobre fondo con imágenes superpuestas
+// -----------------------------------------------------------------------------
+.page-contact {
+  position: relative;
+}
+
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  img {
+    position: absolute;
+    opacity: 0.12;
+    width: 42%;
+    max-width: 380px;
+  }
+
+  .contact-bg__a {
+    top: 8%;
+    left: -2%;
+    transform: rotate(-6deg);
+  }
+
+  .contact-bg__b {
+    bottom: 5%;
+    right: -2%;
+    transform: rotate(5deg);
+  }
+}
+
+.contact-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.5rem;
+
+  @include tablet-up {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 13) Utilidades
+// -----------------------------------------------------------------------------
+.muted {
+  color: $color-muted;
+  font-size: 0.9rem;
+
+  &--spaced {
+    margin-top: 1rem;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}

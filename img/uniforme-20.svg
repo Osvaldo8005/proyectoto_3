@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-label="Uniforme corporativo">
+  <rect width="360" height="300" fill="#fafafa"/>
+  <rect x="110" y="60" width="140" height="180" rx="8" fill="#E60014"/>
+  <rect x="125" y="75" width="110" height="18" fill="#fff" opacity="0.95"/>
+  <rect x="150" y="115" width="60" height="8" fill="#333"/>
+  <circle cx="180" cy="45" r="28" fill="#c98c5e"/>
+  <path d="M152 58 L180 35 L208 58 L200 72 L160 72 Z" fill="#333"/>
+  <rect x="100" y="95" width="35" height="70" rx="4" fill="#b80012"/>
+  <rect x="225" y="95" width="35" height="70" rx="4" fill="#b80012"/>
+</svg>

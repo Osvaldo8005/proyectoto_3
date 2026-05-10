@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registro de observación — Sistema Estafeta</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-logo" href="index.html">
+          <img src="img/logo-wordmark.svg" alt="estafeta" width="180" height="32" />
+          <span>Observaciones de entregas fallidas</span>
+        </a>
+        <nav class="site-nav" aria-label="Principal">
+          <a href="index.html">Login</a>
+          <a href="registro.html" aria-current="page">Registro</a>
+          <a href="historial.html">Historial</a>
+          <a href="quienes-somos.html">Quiénes somos</a>
+          <a href="vision-mision.html">Visión y misión</a>
+          <a href="tiendita.html">Tiendita</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <section class="card" aria-labelledby="reg-title">
+        <h1 id="reg-title" class="card__title">Registrar observación de entrega fallida</h1>
+        <p class="card__subtitle">Capture los datos según el wireframe del Producto Integrador.</p>
+
+        <form class="form-grid" action="#" method="get">
+          <div class="form-row form-row--inline">
+            <div class="form-field">
+              <label for="guia">Número de guía</label>
+              <input id="guia" name="guia" type="text" placeholder="Ej. 12345678901234567890" />
+            </div>
+            <button class="btn" type="button">Buscar</button>
+          </div>
+
+          <div class="form-field">
+            <label for="motivo">Motivo de falla</label>
+            <select id="motivo" name="motivo">
+              <option value="">Seleccione un motivo</option>
+              <option>Domicilio cerrado</option>
+              <option>Destinatario ausente</option>
+              <option>Dirección incorrecta o incompleta</option>
+              <option>Zona de riesgo / acceso restringido</option>
+              <option>Rehusa el paquete</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <fieldset class="form-field">
+            <legend>Evidencias</legend>
+            <label class="form-check">
+              <input type="checkbox" name="adjuntar_foto" />
+              Adjuntar foto
+            </label>
+            <label class="form-check">
+              <input type="checkbox" name="grabar_nota" />
+              Grabar nota de voz
+            </label>
+          </fieldset>
+
+          <div class="form-field">
+            <label for="obs">Observaciones</label>
+            <textarea id="obs" name="observaciones" placeholder="Detalle lo ocurrido en sitio…"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn" type="submit">Guardar observación</button>
+            <button class="btn btn--secondary" type="reset">Cancelar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">Prototipo académico — Estafeta — sin funcionalidad real.</footer>
+  </body>
+</html>

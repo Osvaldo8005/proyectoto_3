@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" role="img" aria-label="Vehículo de distribución">
+  <rect width="800" height="320" fill="#333"/>
+  <rect x="120" y="160" width="560" height="16" fill="#555"/>
+  <rect x="140" y="110" width="380" height="70" rx="6" fill="#E60014"/>
+  <rect x="520" y="125" width="140" height="55" rx="5" fill="#E60014"/>
+  <text x="220" y="155" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#fff">LOGÍSTICA NACIONAL</text>
+  <circle cx="210" cy="188" r="28" fill="#111" stroke="#444" stroke-width="4"/>
+  <circle cx="580" cy="188" r="28" fill="#111" stroke="#444" stroke-width="4"/>
+</svg>

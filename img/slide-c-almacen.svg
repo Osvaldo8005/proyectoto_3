@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" role="img" aria-label="Centro de distribución">
+  <rect width="800" height="320" fill="#e9e9e9"/>
+  <rect x="60" y="80" width="680" height="160" fill="#fff" stroke="#ccc" stroke-width="2"/>
+  <rect x="100" y="120" width="80" height="80" fill="#E60014" opacity="0.85"/>
+  <rect x="200" y="120" width="80" height="80" fill="#E60014" opacity="0.65"/>
+  <rect x="300" y="120" width="80" height="80" fill="#E60014" opacity="0.45"/>
+  <text x="120" y="60" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#333">RED DE DISTRIBUCIÓN</text>
+</svg>

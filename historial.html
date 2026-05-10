@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Historial — Sistema Estafeta</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-logo" href="index.html">
+          <img src="img/logo-wordmark.svg" alt="estafeta" width="180" height="32" />
+          <span>Observaciones de entregas fallidas</span>
+        </a>
+        <nav class="site-nav" aria-label="Principal">
+          <a href="index.html">Login</a>
+          <a href="registro.html">Registro</a>
+          <a href="historial.html" aria-current="page">Historial</a>
+          <a href="quienes-somos.html">Quiénes somos</a>
+          <a href="vision-mision.html">Visión y misión</a>
+          <a href="tiendita.html">Tiendita</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <section class="card" aria-labelledby="hist-title">
+        <h1 id="hist-title" class="card__title">Historial de observaciones</h1>
+        <p class="card__subtitle">Consulta y filtra registros previos (demostración visual).</p>
+
+        <div class="toolbar">
+          <div class="form-field toolbar__grow">
+            <label for="buscar-guia">Buscar guía</label>
+            <input id="buscar-guia" type="search" name="q" placeholder="Número de guía" />
+          </div>
+          <button class="btn btn--secondary" type="button">Filtrar por fecha</button>
+          <button class="btn btn--secondary" type="button">Filtrar por motivo</button>
+        </div>
+
+        <div class="table-wrap" role="region" aria-label="Tabla de historial" tabindex="0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Motivo</th>
+                <th scope="col">Observación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>08/05/2026</td>
+                <td>Domicilio cerrado</td>
+                <td>No hubo respuesta; se dejó aviso en buzón.</td>
+              </tr>
+              <tr>
+                <td>07/05/2026</td>
+                <td>Destinatario ausente</td>
+                <td>Vecino indicó regreso hasta el fin de semana.</td>
+              </tr>
+              <tr>
+                <td>06/05/2026</td>
+                <td>Dirección incorrecta o incompleta</td>
+                <td>Falta número interior en el padrón; se solicitó aclaración.</td>
+              </tr>
+              <tr>
+                <td>05/05/2026</td>
+                <td>Zona de riesgo / acceso restringido</td>
+                <td>Acceso temporal cerrado por obra en la calle.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted muted--spaced">Los datos mostrados son ficticios para el prototipo.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">Prototipo académico — Estafeta — sin funcionalidad real.</footer>
+  </body>
+</html>
